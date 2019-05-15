@@ -172,9 +172,9 @@ def train(X_train, y_train, X_test, y_test):
 
             ## Updating weights
 
-            w1 = w1 - delta_w1 - alpha*delta_w1_previous
-            w2 = w2 - delta_w2 - alpha*delta_w2_previous
-            w3 = w3 - delta_w3 - alpha*delta_w3_previous
+            w1 -= delta_w1 + alpha*delta_w1_previous
+            w2 -= delta_w2 + alpha*delta_w2_previous
+            w3 -= delta_w3 + alpha*delta_w3_previous
 
             delat_w1_previous, delta_w2_previous, delta_w3_previous = delta_w1, delta_w2, delta_w3
 
