@@ -34,13 +34,7 @@ def visualize_data(img_array, label_array):
              ax[index].imshow(img, cmap = 'Greys', interpolation = 'nearest')
         plt.show()
 
-## one hot encoding
 
-def one_hot_function(y, n_labels = 10):
-    one_hot = np.zeros((n_labels, y.shape[0]))
-    for i, value in enumerate(y):
-        one_hot[value, i] = 1
-    return one_hot
 
 ## sigmoid function and etc
 
@@ -65,7 +59,15 @@ def vis_sigmoid_grad():
     fig, ax = plt.subplots()
     ax.plot(x, y)
     plt.show()
-
+    
+def adding_bias(X, position):
+    if position == 'column':
+        X_new = np.ones((X.shape[0], X.shape[1] + 1))
+        X_new[:, 1:] = X
+    elif position == 'row':
+        X_new = np.ones((X.shape[0] + 1, X.shape[1]))
+        X_new[1:, :] = X
+    return X_new
 ## Use cross-entropy as the cost function
 
 def cross_entropy_cost(y_enc, output):
@@ -75,14 +77,14 @@ def cross_entropy_cost(y_enc, output):
     cost = np.sum(part1 -  part2)
     return cost
 
-def adding_bias(X, position):
-    if position == 'column':
-        X_new = np.ones((X.shape[0], X.shape[1] + 1))
-        X_new[:, 1:] = X
-    elif position == 'row':
-        X_new = np.ones((X.shape[0] + 1, X.shape[1]))
-        X_new[1:, :] = X
-    return X_new
+## one hot encoding
+
+def one_hot_function(y, n_labels = 10):
+    one_hot = np.zeros((n_labels, y.shape[0]))
+    for i, value in enumerate(y):
+        one_hot[value, i] = 1
+    return one_hot
+
 
 def init_weights(num_input, num_hidden, num_output):
     w1 = np.random.uniform(-1, 1, size = num_hidden*(num_input + 1))
