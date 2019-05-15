@@ -144,9 +144,9 @@ def train(X_train, y_train, X_test, y_test):
     batch = 32
 
     w1, w2, w3 = init_weights(784, 75, 10)
-    alpha = 0.01
-    eta = 0.01
-    discount = 0.001
+    alpha = 0.0001
+    eta = 0.0001
+    discount = 0.00001
     delta_w1_previous = np.zeros(w1.shape)
     delta_w2_previous = np.zeros(w2.shape)
     delta_w3_previous = np.zeros(w3.shape)
