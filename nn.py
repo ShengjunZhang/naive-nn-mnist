@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import struct
-import os
 
 print("Import all the packages without any error!!")
 
